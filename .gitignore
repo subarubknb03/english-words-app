@@ -2,3 +2,17 @@
 .devcontainer/
 Dockerfile
 docker-compose.yml
+env/
+
+# python
+__pycache__/
+
+# test
+test/
+
+# others
+.DS_Store
+.ipynb_checkpoints
+
+# under development
+app/database/
