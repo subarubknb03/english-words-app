@@ -1,12 +1,7 @@
-from configparser import MissingSectionHeaderError
 import glob
 
 import japanize_kivy
 from kivy.app import App
-# from kivy.config import Config
-# Config.set('graphics', 'width', '700')
-# Config.set('graphics', 'height', '500')
-# Config.write()
 from kivy.core.window import Window
 from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.boxlayout import BoxLayout
@@ -98,8 +93,6 @@ class TestScreen(Screen):
         self.status = 1
         self.japanese_tmp = ''
 
-
-
     def on_press_button(self):
         """
         for next button.
@@ -137,7 +130,6 @@ class MemorizeScreen(Screen):
         self.index = 0
         self.english, self.japanese = 'test', 'テスト'
 
-
     def on_press_button(self):
         """
         for next button.
@@ -165,6 +157,7 @@ class ErrorPopupScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.msg = 'ファイルを選択し直してください。'
+
 
 class ErrorPopup:
     def open_popup(self):

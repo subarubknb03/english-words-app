@@ -61,11 +61,7 @@ class File:
         --------------------
         df: DataFrame
         """
-        if self.file_type == 'excel':
-            df = pd.read_excel(self.file_path)
-        elif self.file_type == 'csv':
-            df = pd.read_csv(self.file_path)
-        # elif self.file_type == 'not supported':
+        df = pd.read_csv(self.file_path)
 
         return df
 
