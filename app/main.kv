@@ -1,10 +1,17 @@
 #:kivy 1.0.9
+<ScreenLayout@BoxLayout>:
+    orientation: 'vertical'
+
+<WordsLabel@Label>:
+    font_size: 40
+
+<ButtonLayout@BoxLayout>:
+    orientation: 'horizontal'
+    size_hint_y: 0.2
+
 <MainScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: 0.2
+    ScreenLayout:
+        ButtonLayout:
             Button:
                 id: 'home_button'
                 text: "Home"
@@ -18,10 +25,8 @@
                 text: 'Update'
                 on_press: root.manager.current = 'update'
         Label:
-            text: 'Templateでテンプレートファイルをダウンロードできます。\nUpdateでファイルを選択できます。\n※注意※ Updateすると前回のデータは削除されます。\nTestで確認できます。\nMemorizeは記憶するためのモードです。'
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: 0.2
+            text: 'Templateでテンプレートファイルをダウンロードできます。\nUpdateでファイルを選択できます。\n※注意※ Updateすると前回のデータは削除されます。'
+        ButtonLayout:
             Button:
                 id: 'Test_button'
                 text: 'Test'
@@ -32,9 +37,8 @@
                 on_press: root.manager.current = 'memorize'
 
 <TemplateScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        BoxLayout:
+    ScreenLayout:
+        ButtonLayout:
             orientation: 'horizontal'
             size_hint_y: 0.2
             Button:
@@ -70,18 +74,15 @@
                     id: 'excel'
                     group: 'radio'
                     on_press: root.on_checkbox_press('excel')
-        Button:
-            size_hint_y: 0.2
-            id: 'download_button'
-            text: 'Download'
-            on_press: root.download_file()
+        ButtonLayout:
+            Button:
+                id: 'download_button'
+                text: 'Download'
+                on_press: root.download_file()
 
 <UpdateScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: 0.2
+    ScreenLayout:
+        ButtonLayout:
             Button:
                 id: 'home_button'
                 text: "Home"
@@ -104,19 +105,15 @@
             Label:
                 size_hint_y: 0.1
                 text: root.status
-        Button:
-            size_hint_y: 0.2
-            id: "button_register"
-            text: "register"
-            on_press:
-                root.load_english_word_file(filechooser.selection)
+        ButtonLayout:
+            Button:
+                id: "button_register"
+                text: "Register"
+                on_press: root.load_english_word_file(filechooser.selection)
 
 <TestScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: 0.2
+    ScreenLayout:
+        ButtonLayout:
             Button:
                 id: 'home_button'
                 text: "Home"
@@ -131,25 +128,18 @@
                 on_press: root.manager.current = 'update'
         BoxLayout:
             orientation: 'vertical'
-            Label:
+            WordsLabel:
                 text: root.english
-                font_size: '50'
-            Label:
+            WordsLabel:
                 text: root.japanese
-                font_size: '50'
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: 0.2
+        ButtonLayout:
             Button:
                 text: root.button_text
                 on_press: root.on_press_button()
 
 <MemorizeScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint_y: 0.2
+    ScreenLayout:
+        ButtonLayout:
             Button:
                 id: 'home_button'
                 text: "Home"
@@ -164,20 +154,17 @@
                 on_press: root.manager.current = 'update'
         BoxLayout:
             orientation: 'vertical'
-            Label:
+            WordsLabel:
                 text: root.english
-                font_size: '50'
-            Label:
+            WordsLabel:
                 text: root.japanese
-                font_size: '50'
-        Button:
-            size_hint_y: 0.2
-            text: 'next'
-            on_press: root.on_press_button()
+        ButtonLayout:
+            Button:
+                text: 'next'
+                on_press: root.on_press_button()
 
 <ErrorPopupScreen>:
-    BoxLayout:
-        orientation: 'vertical'
+    ScreenLayout:
         Label:
             size_hint_y: 0.8
             text: root.msg

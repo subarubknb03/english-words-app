@@ -3,6 +3,7 @@
 Dockerfile
 docker-compose.yml
 env/
+.kivy_env/
 
 # python
 __pycache__/
