@@ -20,12 +20,12 @@
                 id: 'template_button'
                 text: 'Template'
                 on_press: root.manager.current = 'template'
-            Button:
-                id: 'update_button'
-                text: 'Update'
-                on_press: root.manager.current = 'update'
+            # Button:
+            #     id: 'update_button'
+            #     text: 'Update'
+            #     on_press: root.manager.current = 'update'
         Label:
-            text: 'Templateでテンプレートファイルをダウンロードできます。\nUpdateでファイルを選択できます。\n※注意※ Updateすると前回のデータは削除されます。'
+            text: 'Templateでテンプレートファイルをダウンロードできます。'
         ButtonLayout:
             Button:
                 id: 'Test_button'
@@ -49,10 +49,10 @@
                 id: 'template_button'
                 text: 'Template'
                 on_press: root.manager.current = 'template'
-            Button:
-                id: 'update_button'
-                text: 'Update'
-                on_press: root.manager.current = 'update'
+            # Button:
+            #     id: 'update_button'
+            #     text: 'Update'
+            #     on_press: root.manager.current = 'update'
         BoxLayout:
             orientation: 'vertical'
             BoxLayout:
@@ -80,36 +80,36 @@
                 text: 'Download'
                 on_press: root.download_file()
 
-<UpdateScreen>:
-    ScreenLayout:
-        ButtonLayout:
-            Button:
-                id: 'home_button'
-                text: "Home"
-                on_press: root.manager.current = 'main'
-            Button:
-                id: 'template_button'
-                text: 'Template'
-                on_press: root.manager.current = 'template'
-            Button:
-                id: 'update_button'
-                text: 'Update'
-                on_press: root.manager.current = 'update'
-        BoxLayout:
-            orientation: 'vertical'
-            FileChooserListView:
-                size_hint_y: 0.5
-                id: filechooser
-                path: '/Users'
-                color: '#242424'
-            Label:
-                size_hint_y: 0.1
-                text: root.status
-        ButtonLayout:
-            Button:
-                id: "button_register"
-                text: "Register"
-                on_press: root.load_english_word_file(filechooser.selection)
+# <UpdateScreen>:
+#     ScreenLayout:
+#         ButtonLayout:
+#             Button:
+#                 id: 'home_button'
+#                 text: "Home"
+#                 on_press: root.manager.current = 'main'
+#             Button:
+#                 id: 'template_button'
+#                 text: 'Template'
+#                 on_press: root.manager.current = 'template'
+#             Button:
+#                 id: 'update_button'
+#                 text: 'Update'
+#                 on_press: root.manager.current = 'update'
+#         BoxLayout:
+#             orientation: 'vertical'
+#             FileChooserListView:
+#                 size_hint_y: 0.5
+#                 id: filechooser
+#                 path: '/Users'
+#                 color: '#242424'
+#             Label:
+#                 size_hint_y: 0.1
+#                 text: root.status
+#         ButtonLayout:
+#             Button:
+#                 id: "button_register"
+#                 text: "Register"
+#                 on_press: root.load_english_word_file(filechooser.selection)
 
 <TestScreen>:
     ScreenLayout:
@@ -122,10 +122,10 @@
                 id: 'template_button'
                 text: 'Template'
                 on_press: root.manager.current = 'template'
-            Button:
-                id: 'update_button'
-                text: 'Update'
-                on_press: root.manager.current = 'update'
+            # Button:
+            #     id: 'update_button'
+            #     text: 'Update'
+            #     on_press: root.manager.current = 'update'
         BoxLayout:
             orientation: 'vertical'
             WordsLabel:
@@ -148,10 +148,10 @@
                 id: 'template_button'
                 text: 'Template'
                 on_press: root.manager.current = 'template'
-            Button:
-                id: 'update_button'
-                text: 'Update'
-                on_press: root.manager.current = 'update'
+            # Button:
+            #     id: 'update_button'
+            #     text: 'Update'
+            #     on_press: root.manager.current = 'update'
         BoxLayout:
             orientation: 'vertical'
             WordsLabel:
@@ -160,7 +160,7 @@
                 text: root.japanese
         ButtonLayout:
             Button:
-                text: 'next'
+                text: root.button_text
                 on_press: root.on_press_button()
 
 <ErrorPopupScreen>:

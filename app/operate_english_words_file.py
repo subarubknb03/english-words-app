@@ -61,7 +61,13 @@ class File:
         --------------------
         df: DataFrame
         """
-        df = pd.read_csv(self.file_path)
+        if self.file_type == 'excel':
+            df = pd.read_excel(self.file_path)
+        elif self.file_type == 'csv':
+            df = pd.read_csv(self.file_path)
+        else:
+            print('Error')
+            exit()
 
         return df
 
@@ -77,7 +83,7 @@ class File:
         --------------------
         None
         """
-        self.df = self.df.dropna()
+        self.df = self.df[['English', 'Japanese']].dropna()
 
     def rm_whitespace(self):
         """
@@ -96,4 +102,4 @@ class File:
 
 
 if __name__ == '__main__':
-    pass
+    file = File('data/sample_words.csv')
