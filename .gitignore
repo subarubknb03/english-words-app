@@ -16,4 +16,5 @@ test/
 .ipynb_checkpoints
 
 # under development
-app/database/
+database/
+update.py
