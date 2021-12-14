@@ -92,6 +92,7 @@ class TestScreen(Screen):
         self.button_text = 'Start'
         self.status = 1
         self.japanese_tmp = ''
+        self.checker = []
 
     def on_press_button(self):
         """
@@ -105,22 +106,28 @@ class TestScreen(Screen):
         --------------------
         None
         """
-        csv_file = glob.glob('data/*.csv')
-        excel_file = glob.glob('data/*.xlsx')
+        csv_file = glob.glob('../data/*.csv')
+        excel_file = glob.glob('../data/*.xlsx')
         if csv_file:
             self.file_path = csv_file[0]
         elif excel_file:
             self.file_path = excel_file[0]
+        else:
+            self.file_path = ''
 
         if self.file_path:
             if self.status:
                 self.status = 0
                 self.japanese = ''
-                self.english, self.japanese_tmp = question.select_english_word(self.file_path)
+                self.english, self.japanese_tmp, self.checker = question.select_english_word(self.file_path, self.checker)
                 self.button_text = 'Answer'
             else:
                 self.japanese = self.japanese_tmp
                 self.status = 1
+                if self.checker == 'reset':
+                    self.japanese = '再度開始します'
+                    self.english = 'Nextをおしてください'
+                    self.checker = []
                 self.button_text = 'Next'
 
         else:
@@ -151,8 +158,8 @@ class MemorizeScreen(Screen):
         --------------------
         None
         """
-        csv_file = glob.glob('data/*.csv')
-        excel_file = glob.glob('data/*.xlsx')
+        csv_file = glob.glob('../data/*.csv')
+        excel_file = glob.glob('../data/*.xlsx')
         if csv_file:
             self.file_path = csv_file[0]
         elif excel_file:
@@ -174,7 +181,7 @@ class ErrorPopupScreen(Screen):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.msg = 'ファイルを選択し直してください。'
+        self.msg = '英単語の書き込まれたファイルがありません'
 
 
 class ErrorPopup:
